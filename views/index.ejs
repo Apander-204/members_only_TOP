@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Main Page</title>
+</head>
+<body>
+    <header>
+        <h3>Members Only</h3>
+        <% if(!user) { %>
+            <div class="signs">
+                <a href="/sign-up">Register</a>
+                <a href="/sign-in">Log in</a>
+            </div>
+        <% } else { %>
+        <div class="signs">
+            <a href="/logout">Log Out</a>
+        </div>
+        <% } %>
+    </header>
+    <main>
+        <div class="messages">
+            <% for(let i = 0; i<messages.length; i++) { %>
+                <div class="message">
+                    <h3><%= messages[i].title %></h3>
+                    <p><%= messages[i].message %></p>
+                    <% if(user) { %>
+                        <p>Author: <%= user.username%></p>
+                    <% } %>
+                </div>
+            <% } %>
+
+        </div>
+    </main>
+
+    <div class="new-message">
+        <a href="/new-message">
+            <p>Send New Message</p>
+        </a>
+    </div>
+
+</body>
+</html>
